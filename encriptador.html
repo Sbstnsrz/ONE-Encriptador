@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Encriptador de mensajes Alura</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="encriptador.css">
+</head>
+<body>
+	<header>
+		<img class="logo" src="img/Vector.svg">
+	</header>
+	<main>
+		<div>
+			<input class="input"/>
+		</div>
+		<div>
+			<ul class="botones">
+				<li><button class="encriptar">
+					<p>Encriptar</p>
+					</button>
+				</li>
+				<li><button class="desencriptar">
+					<p>Desencriptar</p>
+					</button>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<input class="output"/>
+			<button class="copiar"><p>Copiar</p></button>
+		</div>
+		<div class="blank">
+			<img class="munieco" src="img/Muñeco.svg">
+			<p class="p1">Ningún mensaje fue encontrado</p>
+			<p class="p2">Ingresa el texto que desees encriptar o desencriptar.</p>
+		</div>
+
+		<script>
+			var codigo = ["e","enter","i","imes","a","ai","o","ober","u","ufat"];
+			function encriptar(mensaje){
+				var resultado = mensaje;
+				for(var cont=0; cont<codigo.length; cont+=2){
+					resultado = resultado.replaceAll(codigo[cont],codigo[cont+1]);
+				}
+				return resultado;
+			}
+			function desencriptar(mensaje){
+				var resultado = mensaje;
+				for(var cont=0; cont<codigo.length; cont+=2){
+					resultado=resultado.replaceAll(codigo[cont+1],codigo[cont]);
+				}
+				return resultado;
+			}
+			function validarEncriptacion(){
+				var mensaje = encriptar(input1.value);
+				ocultarImagen();
+				mostrarCopiar();
+				input2.value = mensaje;
+			}
+			function ocultarImagen() {
+  				document.querySelector(".blank").style.display = "none";
+			}
+			function validarDesencriptacion(){
+				var mensaje = desencriptar(input1.value);
+				ocultarImagen();
+				mostrarCopiar();
+				input2.value = mensaje;
+			}
+			function mostrarCopiar(){
+				document.querySelector(".copiar").style.display = "block";
+			}
+			function copiarTexto(){
+				var texto = document.querySelector(".output");
+				texto.select();
+				navigator.clipboard.writeText(texto.value);
+			}
+
+			var input1 =document.querySelector(".input");
+			input1.focus();
+
+			var input2 =document.querySelector(".output");
+
+			var button1 = document.querySelector(".encriptar");
+			button1.onclick = validarEncriptacion;
+
+			var button2 = document.querySelector(".desencriptar");
+			button2.onclick = validarDesencriptacion;
+
+			var botonCopiar = document.querySelector(".copiar");
+			botonCopiar.onclick = copiarTexto;
+		</script>
+		<footer>
+			<a class="copyright" href="https://github.com/Sbstnsrz/ONE/tree/master/Proyecto1" type="sbstnsrz">&copy</a>
+		</footer>
+	</main>
+</body>
