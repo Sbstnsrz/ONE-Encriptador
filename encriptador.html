@@ -33,40 +33,76 @@
 			</div>
 
 			<script>
-				var codigo = ["e","enter","i","imes","a","ai","o","ober","u","ufat"];
-				function encriptar(mensaje){
+				//Variables globales:
+				var sinCodigo = ["e","i","a","o","u"];
+				var conCodigo = ["enter","imes","ai","ober","ufat"];
+				const encriptar = true;
+				const desencriptar = false;
+				var valido = true;
+				//Realiza la encriptacion/Desencriptacion:
+				function procesar(mensaje, encr){
+					//encr, si true encripta, si false desencripta.
 					var resultado = mensaje;
-					for(var cont=0; cont<codigo.length; cont+=2){
-						resultado = resultado.replaceAll(codigo[cont],codigo[cont+1]);
+					for(var cont=0; cont<resultado.length;cont++){
+						valido = true;
+						//Busca mayusculas:
+						for(var i = 65; i<=90; i++){
+							if(resultado.charCodeAt(cont) == i ){
+								valido = false;
+							}
+						}
+						//Busca acentos:
+						for(var i = 192; i<=255; i++){
+							if(resultado.charCodeAt(cont) == i ){
+								valido = false;
+							}
+						}
+						//Alerta que se uso minuscula o acento:
+						if(!valido){break;}
 					}
-					return resultado;
-				}
-				function desencriptar(mensaje){
-					var resultado = mensaje;
-					for(var cont=0; cont<codigo.length; cont+=2){
-						resultado=resultado.replaceAll(codigo[cont+1],codigo[cont]);
+					if(valido){
+						for(var cont=0; cont<sinCodigo.length; cont++){
+							//seleccion de modo:
+							if(encr){var pos1 = sinCodigo[cont];	var pos2 = conCodigo[cont];}
+								else{var pos2 = sinCodigo[cont];	var pos1 = conCodigo[cont];}
+							//Procesado:
+							resultado = resultado.replaceAll(pos1,pos2);
+						}
+						sinImagenConBtnCopiar(true);
+						return resultado;
 					}
-					return resultado;
+					else{
+						sinImagenConBtnCopiar(false);
+						return "";
+						alert("Solo letras minisculas y sin acentos!\nIngreso \""+resultado[cont]+"\"!!");
+					}
 				}
-				function validarEncriptacion(){
-					var mensaje = encriptar(input1.value);
-					ocultarImagen();
-					mostrarCopiar();
-					input2.value = mensaje;
-				}
-				function ocultarImagen() {
+				
+				function sinImagenConBtnCopiar(valor) {
+					if(valor){
+					//Oculta la imagen:
 					document.querySelector(".blank").style.display = "none";
-					
-				}
-				function validarDesencriptacion(){
-					var mensaje = desencriptar(input1.value);
-					ocultarImagen();
-					mostrarCopiar();
-					input2.value = mensaje;
-				}
-				function mostrarCopiar(){
+					//Muestra el boton copiar:
 					document.querySelector(".copiar").style.display = "block";
+					}
+					else{
+						//Oculta la imagen:
+					document.querySelector(".blank").style.display = "block";
+					//Muestra el boton copiar:
+					document.querySelector(".copiar").style.display = "none";
+					}
 				}
+
+				function validarEncriptacion(){
+						var mensaje = procesar(entrada.value, encriptar);
+						salida.value = mensaje;//muestra el mensaje
+				}
+
+				function validarDesencriptacion(){
+						var mensaje = procesar(entrada.value, desencriptar);
+						salida.value = mensaje;
+				}
+
 				function copiarTexto(){
 					var texto = document.querySelector(".output");
 					texto.select();
@@ -75,23 +111,22 @@
 					texto.select();
 				}
 
-				var input1 =document.querySelector(".input");
-				input1.focus();
+				var entrada =document.querySelector(".input");
 
-				var input2 =document.querySelector(".output");
+				var salida = document.querySelector(".output");
 
-				var button1 = document.querySelector(".encriptar");
-				button1.onclick = validarEncriptacion;
+				var botonEncriptar = document.querySelector(".encriptar");
+				botonEncriptar.onclick = validarEncriptacion;
 
-				var button2 = document.querySelector(".desencriptar");
-				button2.onclick = validarDesencriptacion;
+				var botonDesencriptar = document.querySelector(".desencriptar");
+				botonDesencriptar.onclick = validarDesencriptacion;
 
 				var botonCopiar = document.querySelector(".copiar");
 				botonCopiar.onclick = copiarTexto;
 			</script>
 			<footer>
 				<p>
-					<a class="copyright" href="https://github.com/Sbstnsrz/ONE/tree/master/Proyecto1" title="Git del proyecto">&copy Sbstnsrz</a>
+					<a class="copyright" href="https://github.com/Sbstnsrz/ONE/tree/master/Proyecto1" title="Git del proyecto">&copy SBSTNSRZ</a>
 				</p>
 			</footer>
 		</main>

@@ -33,6 +33,9 @@
     opacity: 0.8;
     margin: 0px 30px;
 }
+.memo:hover{
+    font-weight: bold;
+}
 .encriptar{
     display: inline;
     padding: 24px;
@@ -118,11 +121,17 @@
 }
 
 .copyright{
+    font-family: 'Monaco';
+    text-decoration: none;
     display: block;
     position: absolute;
     bottom: 20px;
     left: 20px;
     color: grey;
-    font-size: 20px;
+    font-size: 10px;
 
+}
+.copyright:hover{
+    font-weight: bold;
+    color: black;
 }
