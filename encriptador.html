@@ -17,7 +17,7 @@
 					<img src="img/exclamationMark.svg">
 					Solo letras minúsculas y sin acentos.
 				</p>
-				<p class="botones">
+				<p>
 					<button class="encriptar">Encriptar</button>
 					<button class="desencriptar">Desencriptar</button>
 				</p>
@@ -25,7 +25,7 @@
 			<div class="resultado">
 				<textarea class="output"></textarea>
 				<button class="copiar"><p>Copiar</p></button>
-				<div class="blank">
+				<div class="imagen">
 					<img src="img/Muñeco.svg">
 					<p class="p1">Ningún mensaje fue encontrado</p>
 					<p class="p2">Ingresa el texto que desees encriptar o desencriptar.</p>
@@ -43,7 +43,8 @@
 				function procesar(mensaje, encr){
 					//encr, si true encripta, si false desencripta.
 					var resultado = mensaje;
-					for(var cont=0; cont<resultado.length;cont++){
+					var cont=0;
+					for(cont=0; cont<resultado.length;cont++){
 						valido = true;
 						//Busca mayusculas:
 						for(var i = 65; i<=90; i++){
@@ -73,29 +74,25 @@
 					}
 					else{
 						sinImagenConBtnCopiar(false);
+						alert("Ingreso \""+resultado[cont]+"\" !!");
 						return "";
-						alert("Solo letras minisculas y sin acentos!\nIngreso \""+resultado[cont]+"\"!!");
 					}
 				}
 				
 				function sinImagenConBtnCopiar(valor) {
 					if(valor){
-					//Oculta la imagen:
-					document.querySelector(".blank").style.display = "none";
-					//Muestra el boton copiar:
+					document.querySelector(".imagen").style.display = "none";
 					document.querySelector(".copiar").style.display = "block";
 					}
 					else{
-						//Oculta la imagen:
-					document.querySelector(".blank").style.display = "block";
-					//Muestra el boton copiar:
+					document.querySelector(".imagen").style.display = "block";
 					document.querySelector(".copiar").style.display = "none";
 					}
 				}
 
 				function validarEncriptacion(){
 						var mensaje = procesar(entrada.value, encriptar);
-						salida.value = mensaje;//muestra el mensaje
+						salida.value = mensaje;
 				}
 
 				function validarDesencriptacion(){
@@ -126,7 +123,7 @@
 			</script>
 			<footer>
 				<p>
-					<a class="copyright" href="https://github.com/Sbstnsrz/ONE/tree/master/Proyecto1" title="Git del proyecto">&copy SBSTNSRZ</a>
+					<a class="copyright" href="https://github.com/Sbstnsrz/ONE-Encriptador" title="Git del proyecto">&copy SBSTNSRZ</a>
 				</p>
 			</footer>
 		</main>
