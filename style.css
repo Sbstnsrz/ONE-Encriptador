@@ -9,13 +9,13 @@
 }
 .frente{
     display: inline-block;
-    width: 800px;
+    max-width: 750px;
 }
 .input{
     display: block;
     resize: none;
     height: 400px;
-    width: 700px;
+    width: 80%;
     margin: 30px;
     padding: 10px;
     font-weight: 400;
@@ -42,7 +42,8 @@
     width: 330px;
     background: #0A3871;
     border-radius: 24px;
-    margin: 10px 30px;
+    margin: 10px;
+    margin-left: 30px;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
@@ -56,7 +57,8 @@
     background: #D8DFE8;
     border: 1px solid #0A3871;
     border-radius: 24px;
-    margin: 10px 30px;
+    margin: 10px;
+    margin-left: 30px;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
@@ -64,21 +66,18 @@
     color: #0A3871;
 }
 .resultado{
+    position: relative;
     display: inline-block;
     justify-items: center;
-    width: 400px;
-    height: 800px;
-    position: absolute;
-    top: 50px;
-    left: 800px;
 }
 .output{
-    resize: none;
+    display: block;
     width: 350px;
     height: 550px;
-    margin: 25px;
+    margin: 30px;
     padding: 25px;
     background: #FFFFFF;
+    resize: none;
     box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
     border-radius: 32px;
     border-style: none;
@@ -124,9 +123,9 @@
     font-family: 'Monaco';
     text-decoration: none;
     display: block;
-    position: absolute;
+    position: fixed;
     bottom: 20px;
-    left: 20px;
+    right: 20px;
     color: grey;
     font-size: 10px;
 
@@ -134,4 +133,11 @@
 .copyright:hover{
     font-weight: bold;
     color: black;
+}
+@media screen and (max-width:480px){
+    .frente .encriptar, .desencriptar{
+        width: 100%;
+    }
+}
+    
 }
