@@ -4,18 +4,17 @@
     font-style: normal; 
 }
 .logo{
+    display: none;
     margin-left: 40px;
     margin-top: 40px;
 }
 .frente{
-    display: inline-block;
-    max-width: 750px;
+    max-width: 480px;
 }
 .input{
-    display: block;
     resize: none;
-    height: 400px;
-    width: 80%;
+    height: 300px;
+    width: 90%;
     margin: 30px;
     padding: 10px;
     font-weight: 400;
@@ -25,21 +24,19 @@
     color: #0A3871;
 }
 .memo{
-    display: inline-block;
     width: 250px;
     font-weight: 400;
     font-size: 14px;
     color: #495057;
     opacity: 0.8;
-    margin: 0px 30px;
+    margin-left: 30px;
 }
 .memo:hover{
     font-weight: bold;
 }
 .encriptar{
-    display: inline;
     padding: 24px;
-    width: 330px;
+    width: 300px;
     background: #0A3871;
     border-radius: 24px;
     margin: 10px;
@@ -51,9 +48,8 @@
     color: #FFFFFF;
 }
 .desencriptar{
-    display: inline;
     padding: 24px;
-    width: 330px;
+    width: 300px;
     background: #D8DFE8;
     border: 1px solid #0A3871;
     border-radius: 24px;
@@ -67,14 +63,13 @@
 }
 .resultado{
     position: relative;
-    display: inline-block;
-    justify-items: center;
+    text-align: center;
+    width: 480px;
 }
 .output{
-    display: block;
-    width: 350px;
-    height: 550px;
-    margin: 30px;
+    width: 400px;
+    height: 200px;
+    margin: 10px;
     padding: 25px;
     background: #FFFFFF;
     resize: none;
@@ -86,11 +81,11 @@
 }
 .copiar{
     display: none;
-    position: relative;
-    bottom: 110px;
-    left: 60px;
+    position: absolute;
+    bottom: 50px;
+    left: 80px;
     padding: 24px;
-    width: 330px;
+    width: 300px;
     border: 1px solid #0A3871;
     border-radius: 24px;
     font-weight: 400;
@@ -98,12 +93,14 @@
     color: #0A3871;
 }
 .imagen{
-    display: block;
     position: absolute;
     top: 50px;
     text-align: center;
     margin: 25px;
     padding: 25px;
+}
+.imagen img{
+    display: none;
 }
 .p1{  
     font-weight: 700;
@@ -122,7 +119,7 @@
 .copyright{
     font-family: 'Monaco';
     text-decoration: none;
-    display: block;
+    display: inline-block;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -134,10 +131,25 @@
     font-weight: bold;
     color: black;
 }
-@media screen and (max-width:480px){
-    .frente .encriptar, .desencriptar{
-        width: 100%;
+
+@media screen and (min-width:1000px){
+    .frente{
+        max-width: 750px;
     }
-}
+    .frente, .resultado{
+        display: inline-block;
+    }
     
+}
+
+@media screen and (min-width:480px){
+    .logo{
+        display: block;
+    }
+    .output{
+        height: 600px;
+    }
+    .imagen img{
+        display: block;
+    }
 }
