@@ -34,6 +34,9 @@
 .memo:hover{
     font-weight: bold;
 }
+.botones{
+    align-items: center;
+}
 .encriptar{
     padding: 24px;
     width: 300px;
@@ -132,9 +135,9 @@
     color: black;
 }
 
-@media screen and (min-width:1000px){
+@media screen and (min-width:700px){
     .frente{
-        max-width: 750px;
+        max-width: 700px;
     }
     .frente, .resultado{
         display: inline-block;
