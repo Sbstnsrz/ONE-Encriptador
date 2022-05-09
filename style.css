@@ -1,7 +1,10 @@
+*{
+    font-family: 'Inter';
+    font-style: normal;
+}
+
 :root{
     background: #E5E5E5;
-    font-family: 'Inter';
-    font-style: normal; 
 }
 .logo{
     display: none;
@@ -9,23 +12,21 @@
     margin-top: 40px;
 }
 .frente{
-    max-width: 480px;
+    width: 400px;
+    vertical-align: top;
 }
 .input{
     resize: none;
-    height: 300px;
+    height: 450px;
     width: 90%;
     margin: 30px;
     padding: 10px;
-    font-weight: 400;
     font-size: 32px;
     background-color: #E5E5E5;
     border-style: none;
     color: #0A3871;
 }
 .memo{
-    width: 250px;
-    font-weight: 400;
     font-size: 14px;
     color: #495057;
     opacity: 0.8;
@@ -35,7 +36,7 @@
     font-weight: bold;
 }
 .botones{
-    align-items: center;
+    text-align: center;
 }
 .encriptar{
     padding: 24px;
@@ -44,7 +45,6 @@
     border-radius: 24px;
     margin: 10px;
     margin-left: 30px;
-    font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     text-align: center;
@@ -58,7 +58,6 @@
     border-radius: 24px;
     margin: 10px;
     margin-left: 30px;
-    font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     text-align: center;
@@ -66,57 +65,54 @@
 }
 .resultado{
     position: relative;
-    text-align: center;
-    width: 480px;
+    width: 400px;
+    margin: 10px;
 }
 .output{
-    width: 400px;
+    width: 350px;
     height: 200px;
-    margin: 10px;
     padding: 25px;
     background: #FFFFFF;
     resize: none;
     box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08);
     border-radius: 32px;
     border-style: none;
-    font-weight: 400;
     font-size: 24px;
 }
-.copiar{
-    display: none;
-    position: absolute;
-    bottom: 50px;
-    left: 80px;
-    padding: 24px;
-    width: 300px;
-    border: 1px solid #0A3871;
-    border-radius: 24px;
-    font-weight: 400;
-    font-size: 16px;
-    color: #0A3871;
-}
+
 .imagen{
     position: absolute;
-    top: 50px;
+    top: 30px;
     text-align: center;
-    margin: 25px;
     padding: 25px;
 }
 .imagen img{
     display: none;
 }
-.p1{  
+.p1{
+    margin-top: 1em;
     font-weight: 700;
     font-size: 24px;
-    color: #342A40;
-    margin: 16px;
+    color: #342A40;;
 
 }
 .p2{
-    font-weight: 400;
+    margin-top: 1em;
     font-size: 16px;
     color: #495057;
-    margin: 16px;
+}
+.copiar{
+    display: none;
+    position: absolute;
+    text-align: center;
+    bottom: 20px;
+    left: 50px;
+    padding: 24px;
+    width: 300px;
+    border: 1px solid #0A3871;
+    border-radius: 24px;
+    font-size: 16px;
+    color: #0A3871;
 }
 
 .copyright{
@@ -135,16 +131,6 @@
     color: black;
 }
 
-@media screen and (min-width:700px){
-    .frente{
-        max-width: 700px;
-    }
-    .frente, .resultado{
-        display: inline-block;
-    }
-    
-}
-
 @media screen and (min-width:480px){
     .logo{
         display: block;
@@ -155,4 +141,14 @@
     .imagen img{
         display: block;
     }
+}
+
+@media screen and (min-width:700px){
+    .frente{
+        width: 700px;
+    }
+    .frente, .resultado{
+        display: inline-block;
+    }
+    
 }

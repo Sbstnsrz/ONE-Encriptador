@@ -6,13 +6,16 @@
 		<title>Encriptador de mensajes Alura</title>
 		<link rel="stylesheet" href="reset.css">
 		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@300&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<header class="logo">
-			<img src="img/Logo.svg" title="Alura">
+			<img src="img/Logo.svg" title="Encriptador Alura">
 		</header>
 		<main>
-			<div class="frente">
+			<section class="frente">
 				<p>
 					<textarea class="input">Ingrese el texto aqui.</textarea>
 				</p>
@@ -20,20 +23,20 @@
 					<img src="img/exclamationMark.svg">
 					Solo letras minúsculas y sin acentos.
 				</p>
-				<p>
+				<p class="botones">
 					<button class="encriptar">Encriptar</button>
 					<button class="desencriptar">Desencriptar</button>
 				</p>
-			</div>
-			<div class="resultado">
+			</section>
+			<section class="resultado">
 				<textarea class="output"></textarea>
-				<button class="copiar"><p>Copiar</p></button>
 				<div class="imagen">
 					<img src="img/Muñeco.svg">
 					<p class="p1">Ningún mensaje fue encontrado</p>
 					<p class="p2">Ingresa el texto que desees encriptar o desencriptar.</p>
 				</div>
-			</div>
+				<button class="copiar"><p>Copiar</p></button>
+			</section>
 			<footer>
 				<p>
 					<a class="copyright" href="https://github.com/Sbstnsrz/ONE-Encriptador" title="Git del proyecto">&copy SBSTNSRZ</a>
