@@ -1,36 +1,36 @@
-//Variables globales:
-var sinCodigo = ["e","i","a","o","u"];
-var conCodigo = ["enter","imes","ai","ober","ufat"];
-const encriptar = true;
-const desencriptar = false;
-var valido = true;
+var entrada = document.querySelector(".input");
+var salida = document.querySelector(".output");
+
+
+var botonEncriptar = document.querySelector(".encriptar");
+botonEncriptar.onclick = validarEncriptacion;
+
+var botonDesencriptar = document.querySelector(".desencriptar");
+botonDesencriptar.onclick = validarDesencriptacion;
+
+var botonCopiar = document.querySelector(".copiar");
+botonCopiar.onclick = copiarTexto;
+
+
+
 //Realiza la encriptacion/Desencriptacion:
 function procesar(mensaje, encr){
-    //encr, si true encripta, si false desencripta.
+    var sinCodigo = ["e","i","a","o","u"];
+    var conCodigo = ["enter","imes","ai","ober","ufat"];
     var resultado = mensaje;
-    var cont=0;
-    for(cont=0; cont<resultado.length;cont++){
-        valido = true;
-        //Busca mayusculas:
-        for(var i = 65; i<=90; i++){
-            if(resultado.charCodeAt(cont) == i ){
-                valido = false;
-            }
-        }
-        //Busca acentos:
-        for(var i = 192; i<=255; i++){
-            if(resultado.charCodeAt(cont) == i ){
-                valido = false;
-            }
-        }
-        //Alerta que se uso minuscula o acento:
-        if(!valido){break;}
-    }
-    if(valido){
+    //Devuelve el largo total de la frase, o el index del primer error:
+    var prhaseLength = phraseCorrect(mensaje);
+ 
+    if(prhaseLength===mensaje.length){
         for(var cont=0; cont<sinCodigo.length; cont++){
             //seleccion de modo:
-            if(encr){var pos1 = sinCodigo[cont];	var pos2 = conCodigo[cont];}
-                else{var pos2 = sinCodigo[cont];	var pos1 = conCodigo[cont];}
+            if(encr){
+                var pos1 = sinCodigo[cont];
+                var pos2 = conCodigo[cont];
+            }else{
+                var pos2 = sinCodigo[cont];
+                var pos1 = conCodigo[cont];
+            }
             //Procesado:
             resultado = resultado.replaceAll(pos1,pos2);
         }
@@ -39,9 +39,37 @@ function procesar(mensaje, encr){
     }
     else{
         sinImagenConBtnCopiar(false);
-        alert("Ingreso \""+resultado[cont]+"\" !!");
+        alert("Ingreso \""+resultado[prhaseLength]+"\" !!");
         return "";
     }
+}
+
+function phraseCorrect(str){
+    for(var cont=0; cont<str.length;cont++){
+        //Busca mayusculas y acentos:
+        if(findUpperCase(str, cont) || !charsAtoZ(str, cont)){
+            return cont;
+        }
+    }
+    return cont;   
+}
+
+function findUpperCase(str, cont){
+    for(var i = 65; i<=90; i++){
+        if(str.charCodeAt(cont) == i ){
+            return true;
+        }
+    }
+    return false;
+}
+
+function charsAtoZ(str, cont){
+    for(var i = 192; i<=255; i++){
+        if(str.charCodeAt(cont) == i ){
+            return false;
+        }
+    }
+    return true;
 }
 
 function sinImagenConBtnCopiar(valor) {
@@ -56,32 +84,17 @@ function sinImagenConBtnCopiar(valor) {
 }
 
 function validarEncriptacion(){
-        var mensaje = procesar(entrada.value, encriptar);
+        var mensaje = procesar(entrada.value, true);
         salida.value = mensaje;
 }
 
 function validarDesencriptacion(){
-        var mensaje = procesar(entrada.value, desencriptar);
+        var mensaje = procesar(entrada.value, false);
         salida.value = mensaje;
 }
 
 function copiarTexto(){
-    var texto = document.querySelector(".output");
-    texto.select();
-    navigator.clipboard.writeText(texto.value);
-    texto = document.querySelector(".input");
-    texto.select();
+    salida.select();
+    navigator.clipboard.writeText(salida.value);
+    entrada.select();
 }
-
-var entrada =document.querySelector(".input");
-
-var salida = document.querySelector(".output");
-
-var botonEncriptar = document.querySelector(".encriptar");
-botonEncriptar.onclick = validarEncriptacion;
-
-var botonDesencriptar = document.querySelector(".desencriptar");
-botonDesencriptar.onclick = validarDesencriptacion;
-
-var botonCopiar = document.querySelector(".copiar");
-botonCopiar.onclick = copiarTexto;
